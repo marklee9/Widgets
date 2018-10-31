@@ -1,0 +1,27 @@
+.clock-div {
+  width: 600px;
+  margin: 0 auto;
+  border: 2.5px solid rgb(209, 209, 209);
+  border-radius: 10px;
+  font-family: 'Baloo Bhaijaan', cursive;
+  color: rgba(128, 128, 128, 0.959);
+  font-size: 30px;
+}
+
+.clock-div .time, .clock-div .date {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+}
+.clock-div .title {
+  flex: 2;
+  margin: auto;
+}
+
+.clock-div .display {
+  flex: 5;
+  margin: auto;  
+}
+
