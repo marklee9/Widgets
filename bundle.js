@@ -103,13 +103,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_weather__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./widgets/weather */ "./frontend/widgets/weather.jsx");
 /* harmony import */ var _widgets_tabs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./widgets/tabs */ "./frontend/widgets/tabs.jsx");
 
+ // Widgets
 
 
 
 
+var panes = [{
+  title: "one",
+  content: "I'm first"
+}, {
+  title: "two",
+  content: "Second yo"
+}, {
+  title: "three",
+  content: "Third pane here"
+}];
 
 function Root() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_widgets_clock__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_widgets_weather__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_widgets_tabs__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Clock"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_widgets_clock__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Weather"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_widgets_weather__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Tabs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_widgets_tabs__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    panes: panes
+  })));
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -241,13 +254,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
@@ -257,15 +270,56 @@ function (_React$Component) {
   _inherits(Tabs, _React$Component);
 
   function Tabs(props) {
+    var _this;
+
     _classCallCheck(this, Tabs);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Tabs).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Tabs).call(this, props));
+    _this.state = {
+      selected: 0
+    };
+    _this.handleTabClick = _this.handleTabClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(Tabs, [{
+    key: "handleTabClick",
+    value: function handleTabClick(e) {
+      e.preventDefault();
+      this.setState({
+        selected: Number(e.target.getAttribute("index"))
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Tabs"));
+      var _this2 = this;
+
+      var titles = this.props.panes.map(function (array, i) {
+        if (i === _this2.state.selected) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            onClick: _this2.handleTabClick,
+            className: "each-tabs selected",
+            index: i,
+            key: i
+          }, array["title"]);
+        }
+
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          onClick: _this2.handleTabClick,
+          className: "each-tabs",
+          index: i,
+          key: i
+        }, array["title"]);
+      });
+      var content = this.props.panes[this.state.selected]["content"];
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tab-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tabs"
+      }, titles), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "contents"
+      }, content));
     }
   }]);
 
@@ -321,7 +375,7 @@ function (_React$Component) {
   _createClass(Weather, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Weather"));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null));
     }
   }]);
 

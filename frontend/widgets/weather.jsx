@@ -5,10 +5,12 @@ class Weather extends React.Component {
     super(props);
   }
 
+  
+
   render() {
     return(
       <div>
-        <h1>Weather</h1>
+        <div></div>
       </div>
     );
   }

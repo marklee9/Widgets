@@ -1,0 +1,38 @@
+.tab-div {
+  width: 500px;
+  margin: 0 auto;
+  font-family: 'Baloo Bhaijaan', cursive;
+  color: rgba(128, 128, 128, 0.959);
+}
+
+
+.tabs {
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: inherit;
+  
+  display: flex;
+}
+
+.tabs .each-tabs {
+  flex: 1;
+  text-align: center;
+  width: 100%;
+  border: 2px solid rgba(128, 128, 128, 0.959);
+  border-radius: 10px 10px 0 0;
+}
+
+.tabs .selected {
+  border-bottom: none;
+}
+
+.contents {
+  border: 2px solid rgba(128, 128, 128, 0.959);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  height: 200px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+
