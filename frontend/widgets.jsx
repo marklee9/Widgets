@@ -19,7 +19,8 @@ const lists = [
   { title: "three", content: "3" },
   { title: "four", content: "4" },
   { title: "five", content: "5" },
-  { title: "six", content: "6" }
+  { title: "six", content: "6" },
+  { title: "seven", content: "7"}
 ];
 
 const mark = [1,2,3];
